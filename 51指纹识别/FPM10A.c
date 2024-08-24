@@ -1,3 +1,5 @@
+// Hello this is Aslan 
+
 #include <reg52.h>
 #include "FPM10A.h"
 #include "key.h"
@@ -9,41 +11,41 @@
 volatile unsigned char FPM10A_RECEICE_BUFFER[32];
 unsigned int finger_id = 0;
 
-//FINGERPRINTÍ¨ĞÅĞ­Òé¶¨Òå
+//FINGERPRINTé€šä¿¡åè®®å®šä¹‰
 
-code unsigned char FPM10A_Get_Device[10] ={0x01,0x00,0x07,0x13,0x00,0x00,0x00,0x00,0x00,0x1b};//¿ÚÁîÑéÖ¤
-code unsigned char FPM10A_Pack_Head[6] = {0xEF,0x01,0xFF,0xFF,0xFF,0xFF};  //Ğ­Òé°üÍ·
-code unsigned char FPM10A_Get_Img[6] = {0x01,0x00,0x03,0x01,0x00,0x05};    //»ñµÃÖ¸ÎÆÍ¼Ïñ
-code unsigned char FPM10A_Get_Templete_Count[6] ={0x01,0x00,0x03,0x1D,0x00,0x21 }; //»ñµÃÄ£°æ×ÜÊı
-code unsigned char FPM10A_Search[11]={0x01,0x00,0x08,0x04,0x01,0x00,0x00,0x03,0xE7,0x00,0xF8}; //ËÑË÷Ö¸ÎÆËÑË÷·¶Î§0 - 999,Ê¹ÓÃBUFFER1ÖĞµÄÌØÕ÷ÂëËÑË÷
-code unsigned char FPM10A_Search_0_9[11]={0x01,0x00,0x08,0x04,0x01,0x00,0x00,0x00,0x13,0x00,0x21}; //ËÑË÷0-9ºÅÖ¸ÎÆ
-code unsigned char FPM10A_Img_To_Buffer1[7]={0x01,0x00,0x04,0x02,0x01,0x00,0x08}; //½«Í¼Ïñ·ÅÈëµ½BUFFER1
-code unsigned char FPM10A_Img_To_Buffer2[7]={0x01,0x00,0x04,0x02,0x02,0x00,0x09}; //½«Í¼Ïñ·ÅÈëµ½BUFFER2
-code unsigned char FPM10A_Reg_Model[6]={0x01,0x00,0x03,0x05,0x00,0x09}; //½«BUFFER1¸úBUFFER2ºÏ³ÉÌØÕ÷Ä£°æ
-code unsigned char FPM10A_Delete_All_Model[6]={0x01,0x00,0x03,0x0d,0x00,0x11};//É¾³ıÖ¸ÎÆÄ£¿éÀïËùÓĞµÄÄ£°æ
-volatile unsigned char  FPM10A_Save_Finger[9]={0x01,0x00,0x06,0x06,0x01,0x00,0x0B,0x00,0x19};//½«BUFFER1ÖĞµÄÌØÕ÷Âë´æ·Åµ½Ö¸¶¨µÄÎ»ÖÃ
-//volatile:ÏµÍ³×ÜÊÇÖØĞÂ´ÓËüËùÔÚµÄÄÚ´æ¶ÁÈ¡Êı¾İ£¬¼´Ê¹ËüÇ°ÃæµÄÖ¸Áî¸Õ¸Õ´Ó¸Ã´¦¶ÁÈ¡¹ıÊı¾İ
-/*------------------ FINGERPRINTÃüÁî×Ö --------------------------*/
- //·¢ËÍ°üÍ·
+code unsigned char FPM10A_Get_Device[10] ={0x01,0x00,0x07,0x13,0x00,0x00,0x00,0x00,0x00,0x1b};//å£ä»¤éªŒè¯
+code unsigned char FPM10A_Pack_Head[6] = {0xEF,0x01,0xFF,0xFF,0xFF,0xFF};  //åè®®åŒ…å¤´
+code unsigned char FPM10A_Get_Img[6] = {0x01,0x00,0x03,0x01,0x00,0x05};    //è·å¾—æŒ‡çº¹å›¾åƒ
+code unsigned char FPM10A_Get_Templete_Count[6] ={0x01,0x00,0x03,0x1D,0x00,0x21 }; //è·å¾—æ¨¡ç‰ˆæ€»æ•°
+code unsigned char FPM10A_Search[11]={0x01,0x00,0x08,0x04,0x01,0x00,0x00,0x03,0xE7,0x00,0xF8}; //æœç´¢æŒ‡çº¹æœç´¢èŒƒå›´0 - 999,ä½¿ç”¨BUFFER1ä¸­çš„ç‰¹å¾ç æœç´¢
+code unsigned char FPM10A_Search_0_9[11]={0x01,0x00,0x08,0x04,0x01,0x00,0x00,0x00,0x13,0x00,0x21}; //æœç´¢0-9å·æŒ‡çº¹
+code unsigned char FPM10A_Img_To_Buffer1[7]={0x01,0x00,0x04,0x02,0x01,0x00,0x08}; //å°†å›¾åƒæ”¾å…¥åˆ°BUFFER1
+code unsigned char FPM10A_Img_To_Buffer2[7]={0x01,0x00,0x04,0x02,0x02,0x00,0x09}; //å°†å›¾åƒæ”¾å…¥åˆ°BUFFER2
+code unsigned char FPM10A_Reg_Model[6]={0x01,0x00,0x03,0x05,0x00,0x09}; //å°†BUFFER1è·ŸBUFFER2åˆæˆç‰¹å¾æ¨¡ç‰ˆ
+code unsigned char FPM10A_Delete_All_Model[6]={0x01,0x00,0x03,0x0d,0x00,0x11};//åˆ é™¤æŒ‡çº¹æ¨¡å—é‡Œæ‰€æœ‰çš„æ¨¡ç‰ˆ
+volatile unsigned char  FPM10A_Save_Finger[9]={0x01,0x00,0x06,0x06,0x01,0x00,0x0B,0x00,0x19};//å°†BUFFER1ä¸­çš„ç‰¹å¾ç å­˜æ”¾åˆ°æŒ‡å®šçš„ä½ç½®
+//volatile:ç³»ç»Ÿæ€»æ˜¯é‡æ–°ä»å®ƒæ‰€åœ¨çš„å†…å­˜è¯»å–æ•°æ®ï¼Œå³ä½¿å®ƒå‰é¢çš„æŒ‡ä»¤åˆšåˆšä»è¯¥å¤„è¯»å–è¿‡æ•°æ®
+/*------------------ FINGERPRINTå‘½ä»¤å­— --------------------------*/
+ //å‘é€åŒ…å¤´
 void FPM10A_Cmd_Send_Pack_Head(void)
 {
 	int i;	
-	for(i=0;i<6;i++) //°üÍ·
+	for(i=0;i<6;i++) //åŒ…å¤´
    {
      Uart_Send_Byte(FPM10A_Pack_Head[i]);   
     }		
 }
-//·¢ËÍÖ¸Áî
+//å‘é€æŒ‡ä»¤
 void FPM10A_Cmd_Check(void)
 {
 	int i=0;
-	FPM10A_Cmd_Send_Pack_Head(); //·¢ËÍÍ¨ĞÅĞ­Òé°üÍ·
+	FPM10A_Cmd_Send_Pack_Head(); //å‘é€é€šä¿¡åè®®åŒ…å¤´
 	for(i=0;i<10;i++)
 	 {		
 		Uart_Send_Byte(FPM10A_Get_Device[i]);
 	  }
 }
-//½ÓÊÕ·´À¡Êı¾İ»º³å
+//æ¥æ”¶åé¦ˆæ•°æ®ç¼“å†²
 void FPM10A_Receive_Data(unsigned char ucLength)
 {
   unsigned char i;
@@ -53,44 +55,44 @@ void FPM10A_Receive_Data(unsigned char ucLength)
 
 }
 
-//FINGERPRINT_»ñµÃÖ¸ÎÆÍ¼ÏñÃüÁî
+//FINGERPRINT_è·å¾—æŒ‡çº¹å›¾åƒå‘½ä»¤
 void FPM10A_Cmd_Get_Img(void)
 {
     unsigned char i;
-    FPM10A_Cmd_Send_Pack_Head(); //·¢ËÍÍ¨ĞÅĞ­Òé°üÍ·
-    for(i=0;i<6;i++) //·¢ËÍÃüÁî 0x1d
+    FPM10A_Cmd_Send_Pack_Head(); //å‘é€é€šä¿¡åè®®åŒ…å¤´
+    for(i=0;i<6;i++) //å‘é€å‘½ä»¤ 0x1d
 	{
        Uart_Send_Byte(FPM10A_Get_Img[i]);
 	}
 }
-//½²Í¼Ïñ×ª»»³ÉÌØÕ÷Âë´æ·ÅÔÚBuffer1ÖĞ
+//è®²å›¾åƒè½¬æ¢æˆç‰¹å¾ç å­˜æ”¾åœ¨Buffer1ä¸­
 void FINGERPRINT_Cmd_Img_To_Buffer1(void)
 {
  	unsigned char i;
-	FPM10A_Cmd_Send_Pack_Head(); //·¢ËÍÍ¨ĞÅĞ­Òé°üÍ·      
-   	for(i=0;i<7;i++)   //·¢ËÍÃüÁî ½«Í¼Ïñ×ª»»³É ÌØÕ÷Âë ´æ·ÅÔÚ CHAR_buffer1
+	FPM10A_Cmd_Send_Pack_Head(); //å‘é€é€šä¿¡åè®®åŒ…å¤´      
+   	for(i=0;i<7;i++)   //å‘é€å‘½ä»¤ å°†å›¾åƒè½¬æ¢æˆ ç‰¹å¾ç  å­˜æ”¾åœ¨ CHAR_buffer1
      {
       Uart_Send_Byte(FPM10A_Img_To_Buffer1[i]);
    	  }
 }
-//½«Í¼Ïñ×ª»»³ÉÌØÕ÷Âë´æ·ÅÔÚBuffer2ÖĞ
+//å°†å›¾åƒè½¬æ¢æˆç‰¹å¾ç å­˜æ”¾åœ¨Buffer2ä¸­
 void FINGERPRINT_Cmd_Img_To_Buffer2(void)
 {
      unsigned char i;
-     for(i=0;i<6;i++)    //·¢ËÍ°üÍ·
+     for(i=0;i<6;i++)    //å‘é€åŒ…å¤´
 	 {
     	Uart_Send_Byte(FPM10A_Pack_Head[i]);   
    	 }
-     for(i=0;i<7;i++)   //·¢ËÍÃüÁî ½«Í¼Ïñ×ª»»³É ÌØÕ÷Âë ´æ·ÅÔÚ CHAR_buffer1
+     for(i=0;i<7;i++)   //å‘é€å‘½ä»¤ å°†å›¾åƒè½¬æ¢æˆ ç‰¹å¾ç  å­˜æ”¾åœ¨ CHAR_buffer1
       {
       	Uart_Send_Byte(FPM10A_Img_To_Buffer2[i]);
    	  }
 }
-//ËÑË÷È«²¿ÓÃ»§999Ã¶
+//æœç´¢å…¨éƒ¨ç”¨æˆ·999æš
 void FPM10A_Cmd_Search_Finger(void)
 {
        unsigned char i;	   	    
-			 FPM10A_Cmd_Send_Pack_Head(); //·¢ËÍÍ¨ĞÅĞ­Òé°üÍ·
+			 FPM10A_Cmd_Send_Pack_Head(); //å‘é€é€šä¿¡åè®®åŒ…å¤´
        for(i=0;i<11;i++)
            {
     	      Uart_Send_Byte(FPM10A_Search[i]);   
@@ -101,7 +103,7 @@ void FPM10A_Cmd_Reg_Model(void)
 {
        unsigned char i;	   
 	    
-			 FPM10A_Cmd_Send_Pack_Head(); //·¢ËÍÍ¨ĞÅĞ­Òé°üÍ·
+			 FPM10A_Cmd_Send_Pack_Head(); //å‘é€é€šä¿¡åè®®åŒ…å¤´
 
        for(i=0;i<6;i++)
            {
@@ -110,50 +112,50 @@ void FPM10A_Cmd_Reg_Model(void)
 
 
 }
-//É¾³ıÖ¸ÎÆÄ£¿éÀïµÄËùÓĞÖ¸ÎÆÄ£°æ
+//åˆ é™¤æŒ‡çº¹æ¨¡å—é‡Œçš„æ‰€æœ‰æŒ‡çº¹æ¨¡ç‰ˆ
 void FINGERPRINT_Cmd_Delete_All_Model(void)
 {
      unsigned char i;    
-    for(i=0;i<6;i++) //°üÍ·
+    for(i=0;i<6;i++) //åŒ…å¤´
       Uart_Send_Byte(FPM10A_Pack_Head[i]);   
-    for(i=0;i<6;i++) //ÃüÁîºÏ²¢Ö¸ÎÆÄ£°æ
+    for(i=0;i<6;i++) //å‘½ä»¤åˆå¹¶æŒ‡çº¹æ¨¡ç‰ˆ
 	   {
       Uart_Send_Byte(FPM10A_Delete_All_Model[i]);   
 		 }	
 }
-//±£´æÖ¸ÎÆ
+//ä¿å­˜æŒ‡çº¹
 void FPM10A_Cmd_Save_Finger( unsigned int storeID )
 {
        unsigned long temp = 0;
 		   unsigned char i;
        FPM10A_Save_Finger[5] =(storeID&0xFF00)>>8;
        FPM10A_Save_Finger[6] = (storeID&0x00FF);
-		   for(i=0;i<7;i++)   //¼ÆËãĞ£ÑéºÍ
+		   for(i=0;i<7;i++)   //è®¡ç®—æ ¡éªŒå’Œ
 		   	   temp = temp + FPM10A_Save_Finger[i]; 
-		   FPM10A_Save_Finger[7]=(temp & 0x00FF00) >> 8; //´æ·ÅĞ£ÑéÊı¾İ
+		   FPM10A_Save_Finger[7]=(temp & 0x00FF00) >> 8; //å­˜æ”¾æ ¡éªŒæ•°æ®
 		   FPM10A_Save_Finger[8]= temp & 0x0000FF;		   
-       FPM10A_Cmd_Send_Pack_Head(); //·¢ËÍÍ¨ĞÅĞ­Òé°üÍ·	
+       FPM10A_Cmd_Send_Pack_Head(); //å‘é€é€šä¿¡åè®®åŒ…å¤´	
        for(i=0;i<9;i++)  
-      		Uart_Send_Byte(FPM10A_Save_Finger[i]);      //·¢ËÍÃüÁî ½«Í¼Ïñ×ª»»³É ÌØÕ÷Âë ´æ·ÅÔÚ CHAR_buffer1
+      		Uart_Send_Byte(FPM10A_Save_Finger[i]);      //å‘é€å‘½ä»¤ å°†å›¾åƒè½¬æ¢æˆ ç‰¹å¾ç  å­˜æ”¾åœ¨ CHAR_buffer1
 }
-//Ìí¼ÓÖ¸ÎÆ
+//æ·»åŠ æŒ‡çº¹
 void FPM10A_Add_Fingerprint()
 {
 	unsigned char id_show[]={0,0,0};
-	LCD1602_WriteCMD(0x01); //ÇåÆÁ
+	LCD1602_WriteCMD(0x01); //æ¸…å±
 	finger_id=0;  
 	while(1)
 	{
 	LCD1602_Display(0x80,"   Add  finger  ",0,16);
 	LCD1602_Display(0xc0,"    ID is       ",0,16);
-	//°´·µ»Ø¼üÖ±½Ó»Øµ½Ö÷²Ëµ¥
+	//æŒ‰è¿”å›é”®ç›´æ¥å›åˆ°ä¸»èœå•
 	if(KEY_CANCEL == 0) 
 	{
 		 while(KEY_CANCEL==0);
 		 break;
 	}
 
-	//°´ÇĞ»»¼üÖ¸ÎÆiDÖµ¼Ó1
+	//æŒ‰åˆ‡æ¢é”®æŒ‡çº¹iDå€¼åŠ 1
 	if(KEY_DOWN == 0)
 	{
 		while(KEY_DOWN==0);
@@ -165,13 +167,13 @@ void FPM10A_Add_Fingerprint()
 		finger_id = finger_id + 1;
 	}
 
-	 //Ö¸ÎÆiDÖµÏÔÊ¾´¦Àí 
+	 //æŒ‡çº¹iDå€¼æ˜¾ç¤ºå¤„ç† 
 	 LCD1602_WriteCMD(0xc0+10);
 	 LCD1602_WriteDAT(finger_id/100+48);
 	 LCD1602_WriteDAT(finger_id%100/10+48);
 	 LCD1602_WriteDAT(finger_id%100%10+48);
 
-	 //°´È·ÈÏ¼ü¿ªÊ¼Â¼ÈëÖ¸ÎÆĞÅÏ¢ 		 			
+	 //æŒ‰ç¡®è®¤é”®å¼€å§‹å½•å…¥æŒ‡çº¹ä¿¡æ¯ 		 			
 	 if(KEY_OK == 0)
 	  {	
 			  while(KEY_OK==0);
@@ -179,15 +181,15 @@ void FPM10A_Add_Fingerprint()
 			  LCD1602_Display(0xc0,"                ",0,16);
 			while(KEY_CANCEL == 1)
 		   {
-			  //°´ÏÂ·µ»Ø¼üÍË³öÂ¼Èë·µ»ØfingerIDµ÷Õû×´Ì¬   
+			  //æŒ‰ä¸‹è¿”å›é”®é€€å‡ºå½•å…¥è¿”å›fingerIDè°ƒæ•´çŠ¶æ€   
 				if(KEY_CANCEL == 0) 
 				 {
 				  while(KEY_CANCEL==0);
 				  break;
 				  }
-				FPM10A_Cmd_Get_Img(); //»ñµÃÖ¸ÎÆÍ¼Ïñ
+				FPM10A_Cmd_Get_Img(); //è·å¾—æŒ‡çº¹å›¾åƒ
 				FPM10A_Receive_Data(12);
-				//ÅĞ¶Ï½ÓÊÕµ½µÄÈ·ÈÏÂë,µÈÓÚ0Ö¸ÎÆ»ñÈ¡³É¹¦
+				//åˆ¤æ–­æ¥æ”¶åˆ°çš„ç¡®è®¤ç ,ç­‰äº0æŒ‡çº¹è·å–æˆåŠŸ
 				if(FPM10A_RECEICE_BUFFER[9]==0)
 				 {
 					Delay_Ms(100);
@@ -205,22 +207,22 @@ void FPM10A_Add_Fingerprint()
 							while(KEY_CANCEL==0);
 							break;
 						}
-					 FPM10A_Cmd_Get_Img(); //»ñµÃÖ¸ÎÆÍ¼Ïñ
+					 FPM10A_Cmd_Get_Img(); //è·å¾—æŒ‡çº¹å›¾åƒ
 					 FPM10A_Receive_Data(12);
-					//ÅĞ¶Ï½ÓÊÕµ½µÄÈ·ÈÏÂë,µÈÓÚ0Ö¸ÎÆ»ñÈ¡³É¹¦
+					//åˆ¤æ–­æ¥æ”¶åˆ°çš„ç¡®è®¤ç ,ç­‰äº0æŒ‡çº¹è·å–æˆåŠŸ
 					if(FPM10A_RECEICE_BUFFER[9]==0)
 					{
 						Delay_Ms(200);
 						LCD1602_Display(0x80,"Successful entry",0,16);
 						LCD1602_Display(0xc0,"    ID is       ",0,16);
-						 //Ö¸ÎÆiDÖµÏÔÊ¾´¦Àí 
+						 //æŒ‡çº¹iDå€¼æ˜¾ç¤ºå¤„ç† 
 						 LCD1602_WriteCMD(0xc0+10);
 						 LCD1602_WriteDAT(finger_id/100+48);
 						 LCD1602_WriteDAT(finger_id%100/10+48);
 						 LCD1602_WriteDAT(finger_id%100%10+48);
 						FINGERPRINT_Cmd_Img_To_Buffer2();
 				  		FPM10A_Receive_Data(12);
-						FPM10A_Cmd_Reg_Model();//×ª»»³ÉÌØÕ÷Âë
+						FPM10A_Cmd_Reg_Model();//è½¬æ¢æˆç‰¹å¾ç 
 	         			FPM10A_Receive_Data(12); 
 					  	FPM10A_Cmd_Save_Finger(finger_id);                		         
 	          			FPM10A_Receive_Data(12);
@@ -234,13 +236,13 @@ void FPM10A_Add_Fingerprint()
 	        		break;
 					}
 				}
-//			ClrScreen(); //Çå¿ÕÏÔÊ¾ÆÁ
+//			ClrScreen(); //æ¸…ç©ºæ˜¾ç¤ºå±
 			}
 		//	Delay_Ms(500);
 		}
 }
 
-//ËÑË÷Ö¸ÎÆ
+//æœç´¢æŒ‡çº¹
 void FPM10A_Find_Fingerprint()
 {
 	unsigned int find_fingerid = 0;
@@ -249,9 +251,9 @@ void FPM10A_Find_Fingerprint()
 	{
 		LCD1602_Display(0x80," Please  finger ",0,16);
 		LCD1602_Display(0xc0,"                ",0,16);
-		FPM10A_Cmd_Get_Img(); //»ñµÃÖ¸ÎÆÍ¼Ïñ
+		FPM10A_Cmd_Get_Img(); //è·å¾—æŒ‡çº¹å›¾åƒ
 		FPM10A_Receive_Data(12);		
-		//ÅĞ¶Ï½ÓÊÕµ½µÄÈ·ÈÏÂë,µÈÓÚ0Ö¸ÎÆ»ñÈ¡³É¹¦
+		//åˆ¤æ–­æ¥æ”¶åˆ°çš„ç¡®è®¤ç ,ç­‰äº0æŒ‡çº¹è·å–æˆåŠŸ
 		if(FPM10A_RECEICE_BUFFER[9]==0)
 		{			
 			Delay_Ms(100);
@@ -259,21 +261,21 @@ void FPM10A_Find_Fingerprint()
 			FPM10A_Receive_Data(12);		
 			FPM10A_Cmd_Search_Finger();
 			FPM10A_Receive_Data(16);			
-			if(FPM10A_RECEICE_BUFFER[9] == 0) //ËÑË÷µ½  
+			if(FPM10A_RECEICE_BUFFER[9] == 0) //æœç´¢åˆ°  
 			{
 				LCD1602_Display(0x80," Search success ",0,16);
 				LCD1602_Display(0xc0,"    ID is       ",0,16);
 				Buzz_Times(1);					
-				//Æ´½ÓÖ¸ÎÆIDÊı
+				//æ‹¼æ¥æŒ‡çº¹IDæ•°
 				find_fingerid = FPM10A_RECEICE_BUFFER[10]*256 + FPM10A_RECEICE_BUFFER[11];					
-				 //Ö¸ÎÆiDÖµÏÔÊ¾´¦Àí 
+				 //æŒ‡çº¹iDå€¼æ˜¾ç¤ºå¤„ç† 
 				 LCD1602_WriteCMD(0xc0+10);
 				 LCD1602_WriteDAT(find_fingerid/100+48);
 				 LCD1602_WriteDAT(find_fingerid%100/10+48);
 				 LCD1602_WriteDAT(find_fingerid%100%10+48);						
 				Delay_Ms(2000);				
 			   }
-				else //Ã»ÓĞÕÒµ½
+				else //æ²¡æœ‰æ‰¾åˆ°
 				{
 					LCD1602_Display(0x80," Search  failed ",0,16);
 					LCD1602_Display(0xc0,"                ",0,16);
@@ -282,7 +284,7 @@ void FPM10A_Find_Fingerprint()
 			}		
 		}while(KEY_CANCEL == 1);
 }
-//É¾³ıËùÓĞ´æÖüµÄÖ¸ÎÆ¿â
+//åˆ é™¤æ‰€æœ‰å­˜è´®çš„æŒ‡çº¹åº“
 void FPM10A_Delete_All_Fingerprint()
 {
 		unsigned char i=0;
@@ -315,19 +317,19 @@ void FPM10A_Delete_All_Fingerprint()
 void Device_Check(void)
 {
 		unsigned char i=0;
-		FPM10A_RECEICE_BUFFER[9]=1;				           //´®¿ÚÊı×éµÚ¾ÅÎ»¿ÉÅĞ¶ÏÊÇ·ñÍ¨ĞÅÕı³£
-		LCD1602_Display(0xc0,"Loading",0,7);	           //Éè±¸¼ÓÔØÖĞ½çÃæ							   
-		for(i=0;i<8;i++)						           //½ø¶ÈÌõÊ½¸üĞÂ£¬¿´ÆğÀ´ÃÀ¹Û
+		FPM10A_RECEICE_BUFFER[9]=1;				           //ä¸²å£æ•°ç»„ç¬¬ä¹ä½å¯åˆ¤æ–­æ˜¯å¦é€šä¿¡æ­£å¸¸
+		LCD1602_Display(0xc0,"Loading",0,7);	           //è®¾å¤‡åŠ è½½ä¸­ç•Œé¢							   
+		for(i=0;i<8;i++)						           //è¿›åº¦æ¡å¼æ›´æ–°ï¼Œçœ‹èµ·æ¥ç¾è§‚
 		{
-			LCD1602_WriteDAT(42);	                       //42¶ÔÓ¦ASICÂëµÄ *
-			Delay_Ms(200);						           //¿ØÖÆ½ø¶ÈÌõËÙ¶È
+			LCD1602_WriteDAT(42);	                       //42å¯¹åº”ASICç çš„ *
+			Delay_Ms(200);						           //æ§åˆ¶è¿›åº¦æ¡é€Ÿåº¦
 		}									
-		LCD1602_Display(0xc0,"Docking  failure",0,16);      //Òº¾§ÏÈÏÔÊ¾¶Ô½ÓÊ§°Ü£¬Èç¹ûÖ¸ÎÆÄ£¿é²å¶ÔµÄ»°»á½«Æä¸²¸Ç	
-		FPM10A_Cmd_Check();									//µ¥Æ¬»úÏòÖ¸ÎÆÄ£¿é·¢ËÍĞ£¶ÔÃüÁî
-		FPM10A_Receive_Data(12);							//½«´®¿Ú½ÓÊÕµ½µÄÊı¾İ×ª´æ
- 		if(FPM10A_RECEICE_BUFFER[9] == 0)					//ÅĞ¶ÏÊı¾İµÍµÚ9Î»ÊÇ·ñ½ÓÊÕµ½0
+		LCD1602_Display(0xc0,"Docking  failure",0,16);      //æ¶²æ™¶å…ˆæ˜¾ç¤ºå¯¹æ¥å¤±è´¥ï¼Œå¦‚æœæŒ‡çº¹æ¨¡å—æ’å¯¹çš„è¯ä¼šå°†å…¶è¦†ç›–	
+		FPM10A_Cmd_Check();									//å•ç‰‡æœºå‘æŒ‡çº¹æ¨¡å—å‘é€æ ¡å¯¹å‘½ä»¤
+		FPM10A_Receive_Data(12);							//å°†ä¸²å£æ¥æ”¶åˆ°çš„æ•°æ®è½¬å­˜
+ 		if(FPM10A_RECEICE_BUFFER[9] == 0)					//åˆ¤æ–­æ•°æ®ä½ç¬¬9ä½æ˜¯å¦æ¥æ”¶åˆ°0
 		{
-			LCD1602_Display(0xc0,"Docking  success",0,16);	//·ûºÏ³É¹¦Ìõ¼şÔòÏÔÊ¾¶Ô½Ó³É¹¦
+			LCD1602_Display(0xc0,"Docking  success",0,16);	//ç¬¦åˆæˆåŠŸæ¡ä»¶åˆ™æ˜¾ç¤ºå¯¹æ¥æˆåŠŸ
 		}
 }
 
